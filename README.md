@@ -1,5 +1,5 @@
-# scrapeIt
-To run the complete website, you need to run following 5 applications simultaneously -
+# ScrapeIt
+To run the end to end complete website, you need to run following 5 applications simultaneously -
 
 * MongoDB - Install mongo db on your system. You can follow any online guide to install it.
 
