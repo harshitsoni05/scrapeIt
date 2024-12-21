@@ -1,0 +1,9 @@
+Flask
+Flask-SocketIO
+Flask-Bcrypt
+Flask-CORS
+Flask-PyMongo
+pymongo
+PyJWT
+pika
+Flask-Mail
