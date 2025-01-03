@@ -22,7 +22,7 @@ function ScrapePage() {
       setLoading(true); // Set loading state
 
       await axios.post(
-        "http://localhost:5000/api/scrape",
+        "/api/scrape",
         { url, name },
         { headers: { Authorization: `Bearer ${token}` } }
       );

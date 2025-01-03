@@ -59,8 +59,9 @@ def process_message(data):
     
     scraper.add_keys(scraper.data)
     data["documentJson"] = scraper.data
-    scraper.save_to_json("savedfile.json")
+    #scraper.save_to_json("savedfile.json")
     new_doc_id = add_new_document(data)
+    scraper = None
     logger.info("Task completed successfully.")
 
 def callback(ch, method, properties, body):

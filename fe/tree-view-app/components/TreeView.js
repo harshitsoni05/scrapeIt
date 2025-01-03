@@ -66,7 +66,7 @@ const TreeView = ({ setFilePath, docId }) => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.get(
-        `http://localhost:5000/documents/${docId}/get-children/`,
+        `/api/documents/${docId}/get-children/`,
         {
           params: { path },
           headers: { Authorization: `Bearer ${token}` },

@@ -117,7 +117,7 @@ class WebsiteScraper:
         :param url: The URL to scrape.
         :param depth: Current depth of recursion.
         """
-        if url in self.visited or depth > self.max_depth:
+        if url in self.visited or depth > self.max_depth or len(self.visited)>300:
             return
         self.visited.add(url)
 

@@ -29,7 +29,8 @@ const DocumentEditor = ({ docId, filePath }) => {
 
   useEffect(() => {
     if (!editor) return;
-    socket = io("http://localhost:5000");
+    socket = io("/");
+   
 
     socket.on("connect", () => {
       console.log("Socket.IO connected");

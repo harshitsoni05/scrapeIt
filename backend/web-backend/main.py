@@ -12,6 +12,7 @@ from bson import ObjectId
 import pika
 from flask_mail import Mail, Message
 import json
+import os
 
 
 # Initialization
@@ -154,7 +155,6 @@ def add_new_document(data):
         {"$set": {f"createdDocuments.{document['uuid']}": document_reference}}
     )
     return document_id
-
 
 # WebSocket event handler for joining and updating documents
 @socketio.on('join')
@@ -321,7 +321,8 @@ def document_invite(current_user):
     }
 
     token = jwt.encode(payload, app.config['SECRET_KEY'], algorithm="HS256")
-    invite_link = f"http://localhost:5000/api/accept_invite?token={token}"
+    domain = os.getenv('DOMAIN_URL', 'https://scrape-it.duckdns.org')
+    invite_link = domain + f"/api/accept_invite?token={token}"
     
     try:
         # Send the email
@@ -374,7 +375,7 @@ def accept_invite():
         return jsonify({"error": "Invalid token"}), 400
 
 
-@app.route("/documents/<uuid>/get-children/", methods=["GET"])
+@app.route("/api/documents/<uuid>/get-children/", methods=["GET"])
 @token_required
 def get_children_endpoint(current_user,uuid):
     

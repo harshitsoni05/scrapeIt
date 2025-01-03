@@ -16,7 +16,7 @@ function DocumentsPage() {
 
     const fetchDocuments = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/documents", {
+        const res = await axios.get("/api/documents", {
           headers: { Authorization: `Bearer ${token}` },
         });
         if (res && res.data && res.data.documents) {

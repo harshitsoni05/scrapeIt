@@ -43,7 +43,7 @@ export default function Home() {
         try {
           const token = localStorage.getItem("token");
           const response = await axios.get(
-            `http://127.0.0.1:5000/api/invite`,
+            `/api/invite`,
             {
               params: { docId,email },
               headers: { Authorization: `Bearer ${token}` },

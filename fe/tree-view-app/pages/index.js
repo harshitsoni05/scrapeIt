@@ -10,15 +10,18 @@ export default function Login() {
   useEffect(() => {
     // Client-side authentication middleware
     const token = localStorage.getItem("token");
-    if ((token) && (token!="")) {
-      router.push("/documents"); // Redirect to login if no token
+    if (token && token !== "") {
+      router.push("/documents"); // Redirect to documents if token exists
     }
   }, [router]);
 
   const handleLogin = async () => {
     try {
-      const res = await axios.post("http://localhost:5000/api/login", { email, password });
-      
+      const res = await axios.post( "/api/login", {
+        email,
+        password,
+      });
+
       localStorage.setItem("token", res.data.token);
       router.push("/documents");
     } catch (err) {
@@ -51,6 +54,23 @@ export default function Login() {
         </button>
         <div className="login-link">
           <a href="/signup">Signup</a>
+        </div>
+        <div className="opensource-info">
+          <p>
+            Open-sourced at{" "}
+            <a
+              href="https://github.com/harshitsoni05/scrapeIt"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+                alt="GitHub"
+                style={{ width: "16px", verticalAlign: "middle", marginRight: "4px" }}
+              />
+              scrapeIt
+            </a>
+          </p>
         </div>
       </div>
     </div>
